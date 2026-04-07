@@ -1,0 +1,10 @@
+Step by step guide:
+
+1. In your preferred directory run this command:
+
+  - docker run --rm -v "$(pwd)":/app composer:latest create-project laravel/laravel .
+  # point this to src unless you're willing to adjust the the docker file reading to another folder
+
+2. Create a docker-compose.yaml file:
+
+  - 
