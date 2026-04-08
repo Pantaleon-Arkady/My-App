@@ -1,10 +1,58 @@
 Step by step guide:
 
-1. In your preferred directory run this command:
+1. Create Project:
+
+  In your preferred directory run this command:
 
   - docker run --rm -v "$(pwd)":/app composer:latest create-project laravel/laravel .
   # point this to src unless you're willing to adjust the the docker file reading to another folder
 
-2. Create a docker-compose.yaml file:
+2. Docker compose:
+
+  Create a docker-compose.yaml file:
+
+  * use the the docker compose here as reference
+  - main important change is database from MySQL to PgSQL
+
+3. Docker Folder:
+
+  - docker subfolder:
+    - Dockerfile
+  - nginx subfolder:
+    - default.conf
+
+  use files here as reference
+  - adjust things accordingly, change versions and directories
+  !!!IMPORTANT: # match the versions and directories
+
+3.5 Build:
+
+  - docker compose build
+  # this will take at most 10 minutes to build unless it runs into some problem
+  - go: /localhost:8000
+  # check if laravel is working fine and if its not it should display errors
+
+4. Database:
+
+  - change ".env" file, go to the database (DB) part and match the details from docker compose file
+    which you should set the details properly
+
+  - go to your app: docker exec -it laravel_app /bin/sh
+
+  - clear configure:
+    -> php artisan config:clear
+  - migrate laravel initial tables:
+    -> php artisan migrate
+
+  - go to your database: docker exec -it laravel_postgres /bin/sh
+
+  - login your databse:
+    -> psql -U username -d database_name
+
+  - check tables by laravel:
+    -> /dt
+
+5. Frontend:
 
   - 
+
