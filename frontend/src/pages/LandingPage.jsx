@@ -1,37 +1,21 @@
-import axios from "../../src/api/axios";
-import { useState, useEffect } from "react";
-import { Button } from 'react-bootstrap';
+import RegisterForm from "../forms/RegisterForm";
 
 function LandingPage() {
-    const [message, setMessage] = useState("");
-    const [authReq, setAuthReq] = useState("");
-
-    async function AuthRequest() {
-        try {
-            const res = await axios.get("/auth-request");
-            setAuthReq(res.data.response);
-        } catch (err) {
-            console.error(err);
-        }
-    }
-
-    useEffect(() => {
-        axios.get("/api/test")
-            .then(res => {
-                setMessage(res.data.message);
-            })
-            .catch(err => console.error(err));
-
-        AuthRequest();
-    }, [])
 
     return (
-        <>
-            <div className="border rounded text-white">{message}</div>
-            {authReq}
-            <Button variant="primary">Click me</Button>
-        </>
-    )
+        <div className="d-flex flex-column text-white vh-100 bg-black w-100">
+            <div className="d-flex flex-column flex-md-row flex-grow-1 justify-content-center align-items-center px-4">
+                <div className="landing_greetings_wrapper px-3 px-md-0 w-100 w-md-50 d-flex flex-column">
+                    <p className="text-center landing_greetings">
+                        This app serves as a tracker and note for your workout progess, it helps for easier readability and visualizations of your workouts.
+                    </p>
+                </div>
+                <div className="px-3 w-100 w-md-50">
+                    <RegisterForm />
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default LandingPage;
