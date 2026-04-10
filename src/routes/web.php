@@ -1,13 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/register', [UserController::class, 'register']);
 
 Route::get('/auth-request', function () {
     return response()->json([
         'response' => 'Web response from Laravel'
     ]);
 });
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
