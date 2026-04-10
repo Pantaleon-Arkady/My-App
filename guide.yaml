@@ -54,5 +54,32 @@ Step by step guide:
 
 5. Frontend:
 
-  - 
+  - create separate folder for frontend: create vite@latest frontend
+    - cd to frontend
+    - npm install
+      - used Vite
+      - React
+      - Standard JS
+
+  - check: go to port 5173 or 5174 to see if react is running properly
+
+6. connection CORS authentication:
+
+  - axios: npm install axios
+    - set base URL to 8000 # use axios.js file as reference, inside frontend/src/api
+
+  - cors: go to backend app to config folder
+   - if file "cors" dont exist, create one # use existing file as reference
+   - mainly setting allowed origins to allow request from frontend to backend
+
+7. Routing:
+
+  - Base Authenticated:
+
+  
+  - API:
+
+
+
+  
 
