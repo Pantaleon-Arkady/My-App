@@ -18,7 +18,7 @@ p {
 }
 
 label, input, button, .text_sz, select {
-    font-size: 0.69rem !important;
+    font-size: 0.79rem !important;
 }
 
 html, body {
@@ -54,7 +54,36 @@ html, body {
     width: 30px;
 }
 
+/* Register Form */
+
+.input_divs {
+    color: white;
+    background-color: rgb(105, 110, 122);
+    border-radius: 7px;
+    margin-bottom: 7px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
 @media (min-width: 801px) {
+
+    h4 {
+        font-size: 2rem;
+    }
+
+    p, label, input, button, .text_sz, .content_fs, select {
+        font-size: 0.9rem !important;
+    }
+
+    .reg_fs {
+        font-size: 0.8rem;
+    }
+
+    .page_contents {
+        bottom: 0;
+    }
 
     .landing_greetings_wrapper {
         display: flex;

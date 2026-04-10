@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './index.css';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LandingPage from './pages/LandingPage.jsx';
 
