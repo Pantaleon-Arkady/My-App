@@ -4,6 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
     return response()->json([
-        'message' => 'Hello from Laravel'
+        'message' => 'Response from Laravel API'
     ]);
 });
