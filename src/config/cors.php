@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'paths' => ['*'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout', 'register'],
 
     'allowed_methods' => ['*'],
 
@@ -23,7 +23,6 @@ return [
         'http://localhost:5173',
         'http://localhost:5174',
     ],
-    'supports_credentials' => true,
 
     'allowed_origins_patterns' => [],
 
@@ -36,3 +35,4 @@ return [
     'supports_credentials' => true,
 
 ];
+
