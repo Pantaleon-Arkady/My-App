@@ -28,14 +28,7 @@ class UserController extends Controller
 
         return response()->json([
             'message' => 'User registered successfully',
-            'user' => $user->only('id','name','email'),
+            'user' => $user->only('id','username','email'),
         ], 201);
-    }
-
-    public function index()
-    {
-        return User::select('id', 'name', 'email', 'created_at')
-            ->orderBy('created_at', 'desc')
-            ->get();
     }
 }
