@@ -50,10 +50,16 @@ function RegisterForm() {
 
             navigate("/");
         
-        } catch (error) {
-            console.error(error.response?.data);
-            alert("Failed to register");
-        }
+            } catch (error) {
+                console.log("FULL ERROR:", error);
+            
+                if (error.response) {
+                    console.log("DATA:", error.response.data);
+                    console.log("STATUS:", error.response.status);
+                }
+            
+                alert("Failed to register");
+            }
     };
 
     return (
@@ -75,7 +81,7 @@ function RegisterForm() {
             <div className="input_divs">
                 <label>Username:</label>
                 <input
-                    className={`form-control ${errors.name ? "is-invalid" : ""}`}
+                    className={`form-control ${errors.username ? "is-invalid" : ""}`}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Enter your username..."
