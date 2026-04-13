@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
+import { useAuth } from "../context/AuthContext";
 
 function RegisterForm() {
     const [username, setUsername] = useState("");
@@ -8,6 +9,8 @@ function RegisterForm() {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
+
+    const { login } = useAuth();
 
     function validateForm() {
         const newErrors = {};
@@ -48,7 +51,10 @@ function RegisterForm() {
                 password
             });
 
-            navigate("/");
+            if (data.register) {
+                login(data.user);
+                navigate("/home", { state: { fromRegister: true } });
+            }
         
             } catch (error) {
                 console.log("FULL ERROR:", error);

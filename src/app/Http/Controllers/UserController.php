@@ -27,6 +27,7 @@ class UserController extends Controller
         $request->session()->regenerate();
 
         return response()->json([
+            'register' => true,
             'message' => 'User registered successfully',
             'user' => $user->only('id','username','email'),
         ], 201);
