@@ -1,10 +1,19 @@
 import Headers from "../components/Header"
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function HomePage() {
     const location = useLocation();
+    const navigate = useNavigate();
     const { user, loading } = useAuth();
+
+    useEffect(() => {
+        if (!loading && !user) {
+            navigate("/");
+        }
+    }, [user, loading, navigate]);
 
     if (loading) {
         return <p className="text-black">Loading...</p>;
