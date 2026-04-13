@@ -54,6 +54,21 @@ html, body {
     width: 30px;
 }
 
+:root {
+    --header-height: 95px;
+    --bottom-height: 50px;
+}
+
+.page_contents {
+    position: absolute;
+    top: var(--header-height);
+    bottom: var(--bottom-height);
+    left: 0;
+    right: 0;
+
+    overflow-y: auto;
+}
+
 /* Headers */
 
 .main_header_div {
