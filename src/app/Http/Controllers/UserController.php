@@ -9,6 +9,31 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function login(Request $request)
+    {
+        $validated = $request->validate([
+            'namemail' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        $user = User::where('email', $validated['namemail'])
+            ->orWhere('username', $validated['namemail'])
+            ->first();
+
+        if (!$user || !Hash::check($validated['password'], $user->password)) {
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }
+
+        Auth::login($user);
+        $request->session()->regenerate();
+
+        return response()->json([
+            'login' => true,
+            'message' => 'Login successful',
+            'user' => $user->only('id','username','email')
+        ]);
+    }
+
     public function register(Request $request)
     {
         $validated = $request->validate([
