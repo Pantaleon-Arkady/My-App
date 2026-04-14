@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return response()->json([
+            'message' => 'Logout success!'
+        ]);
+    }
+
     public function login(Request $request)
     {
         $validated = $request->validate([
