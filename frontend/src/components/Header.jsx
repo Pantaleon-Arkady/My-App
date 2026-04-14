@@ -1,23 +1,16 @@
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import Mobilenav from "./Mobilenav";
 
-function Headers({ rightFeature, page }) {
+function Headers({ page }) {
     const { user, logout } = useAuth();
 
     const navigate = useNavigate();
 
     const handleLogout = async () => {
-        try {
-            await axios.post("/logout", {}, { withCredentials: true });
-            logout();
-            navigate("/");
-        } catch (error) {
-            const data = error.response?.data;
-            console.error(data?.message || "Logout failed");
-            alert(data?.message || "Logout failed");
-        }
+        await logout();
+        navigate("/");
     };
 
     const handleHome = () => {
@@ -43,18 +36,22 @@ function Headers({ rightFeature, page }) {
             </div>
 
             <div className="w-25 flex-row justify-content-around d-none d-md-flex">
-                <button
-                    onClick={handleHome}
-                    className="btn btn-outline-primary"
-                >
-                    Home
-                </button>
-                <button
-                    className="btn btn-outline-danger"
-                    onClick={handleLogout}
-                >
-                    Logout
-                </button>
+                {user &&
+                    <>
+                        <button
+                            onClick={handleHome}
+                            className="btn btn-outline-primary"
+                        >
+                            Home
+                        </button>
+                        <button
+                            className="btn btn-outline-danger"
+                            onClick={handleLogout}
+                        >
+                            Logout
+                        </button>
+                    </>
+                }
             </div>
 
         </div>

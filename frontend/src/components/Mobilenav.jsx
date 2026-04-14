@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
+import axios from "../api/axios";
 
 function Mobilenav() {
     const { user, logout } = useAuth();
@@ -11,15 +12,8 @@ function Mobilenav() {
     const [nav, setNav] = useState(false);
 
     const handleLogout = async () => {
-        try {
-            await axios.post("/logout", {}, { withCredentials: true });
-            logout();
-            navigate("/");
-        } catch (error) {
-            const data = error.response?.data;
-            console.error(data?.message || "Logout failed");
-            alert(data?.message || "Logout failed");
-        }
+        await logout();
+        navigate("/");
     };
 
     const handleHome = () => {
